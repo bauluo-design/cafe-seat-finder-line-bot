@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "fmt": "prettier --write .",
-    "test": "jest"
+    "test": "jest",
+    "fmt:check": "prettier --check ."
   },
   "dependencies": {
     "@types/node": "20.5.7",
