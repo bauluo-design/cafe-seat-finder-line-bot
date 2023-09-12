@@ -6,7 +6,7 @@ COPY . /app
 WORKDIR /app
 
 RUN npm install
-RUN npm run dockerfiles
+RUN npm run build
 
 # Create a new image that only contains the production dockerfiles result and run.
 FROM builder as production
