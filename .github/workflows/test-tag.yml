@@ -12,3 +12,16 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: 18
+      - uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_NAME }}.azurecr.io
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+      - name: Build Docker image
+        run: |
+          docker build -f dockerfiles/liff.dockerfile -t ${{ secrets.ACR_NAME }}.azurecr.io/cafe-seat-finder-line-bot:test .
+          docker tag ${{ secrets.ACR_NAME }}.azurecr.io/cafe-seat-finder-line-bot:test ${{ secrets.ACR_NAME }}.azurecr.io/cafe-seat-finder-line-bot:${{ github.ref_name }}
+      - name: push images
+        run: |
+          docker push ${{ secrets.ACR_NAME }}.azurecr.io/cafe-seat-finder-line-bot:test
+          docker push ${{ secrets.ACR_NAME }}.azurecr.io/cafe-seat-finder-line-bot:${{ github.ref_name }}
