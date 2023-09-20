@@ -1,5 +1,5 @@
 import signatureValidator from "../../ext/line/validator";
-import lineClient from "../../ext/line/client";
+import getLineClient from "../../ext/line/client";
 import * as line from "@line/bot-sdk";
 
 export async function POST(request: Request): Promise<Response> {
@@ -20,7 +20,7 @@ export async function POST(request: Request): Promise<Response> {
         type: "text",
         text: event.message.text,
       };
-      await lineClient.replyMessage(event.replyToken, replyMessage);
+      await getLineClient().replyMessage(event.replyToken, replyMessage);
     }
   }
 
