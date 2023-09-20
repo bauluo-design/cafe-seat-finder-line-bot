@@ -5,7 +5,7 @@ LABEL authors="brianliu"
 COPY . /app
 WORKDIR /app
 
-RUN npm install --production
+RUN npm install --omit=dev
 RUN npm run build
 
 # Create a new image that only contains the production dockerfiles result and run.
