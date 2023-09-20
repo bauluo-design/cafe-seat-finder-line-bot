@@ -10,7 +10,7 @@
     "fmt": "prettier --write .",
     "test": "jest",
     "fmt:check": "prettier --check .",
-    "prepare": "husky install"
+    "prepare-precommit": "husky install"
   },
   "dependencies": {
     "@azure/identity": "^3.3.0",
